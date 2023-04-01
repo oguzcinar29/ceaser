@@ -1,0 +1,42 @@
+import art
+
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+print(art.logo)
+
+flag=True
+while flag:
+    str1=""
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+    if shift>26:
+        shift%=26
+    if direction=="encode":
+        for i in text:
+            if i>='a' and i<='z':   
+                temp=alphabet.index(i)+shift
+                if temp>len(alphabet)-1:
+                    anot_temp=abs(shift-(len(alphabet)-alphabet.index(i)))
+                    str1+=alphabet[anot_temp]
+                else:
+                    str1+=alphabet[temp]
+            else:
+                str1+=i
+        print(str1)
+    if direction=="decode":
+        for i in text:
+            if i>='a' and i<='z':   
+                temp=alphabet.index(i)-shift
+                if temp<0:
+                    str1+=alphabet[temp]
+                else:
+                    str1+=alphabet[temp]
+            else:
+                str1+=i
+        print(str1)
+    y_or_n=input("Type 'yes' if you want to go again.Otherwise type 'no'.").lower()
+    if y_or_n!="yes":
+        flag=False
+            
+    
+        
